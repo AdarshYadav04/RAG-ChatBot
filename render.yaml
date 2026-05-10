@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: rag-chatbot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: GEMINI_API_KEY
+        sync: false        
+      - key: API_KEYS
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: LOG_FORMAT
+        value: json
+      - key: LOG_LEVEL
+        value: INFO
+      - key: CHROMA_PERSIST_DIR
+        value: /tmp/chroma_db  # Render has ephemeral disk on free tier
+      - key: CHAT_HISTORY_DB_PATH
+        value: /tmp/chat_history.db
