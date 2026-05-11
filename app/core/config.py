@@ -48,10 +48,9 @@ class Settings(BaseSettings):
     GEMINI_TIMEOUT: int = 30
     GEMINI_MAX_RETRIES: int = 3
 
-    # Vector Database (FAISS)
-    CHROMA_PERSIST_DIR: str = "./chroma_db"
-    # CHROMA_COLLECTION_NAME unused with FAISS (kept for future migration)
-    CHROMA_COLLECTION_NAME: str = "rag_documents"
+    # Vector Database (Pinecone) 
+    PINECONE_API_KEY: str = Field(default="")
+    PINECONE_INDEX_NAME: str = Field(default="rag-chatbot")
     VECTOR_SEARCH_TOP_K: int = 5
     VECTOR_SIMILARITY_THRESHOLD: float = 0.3
 
@@ -81,6 +80,8 @@ class Settings(BaseSettings):
         "contain enough information, say so clearly rather than making things up. "
         "Be concise, accurate, and cite relevant parts of the context when helpful."
     )
+    
+    
 
     @property
     def api_keys_list(self) -> List[str]:

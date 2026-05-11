@@ -17,8 +17,7 @@ google-genai==1.16.0
 tenacity==9.0.0
 
 # Vector Database 
-faiss-cpu==1.10.0
-numpy==2.2.3
+pinecone==5.4.2
 
 # Document Processing
 pypdf==5.1.0
